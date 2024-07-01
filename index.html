@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+
+    <link rel="stylesheet" href="style.css" />   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("PkpzQMlVfJGKBZwQw");
+        })();
+    </script>
+    
+</head>
+
+<body>
+    <nav id="navbar" class="nav">
+        <ul>
+            <li>
+                <a href="#welcome-section">About</a>
+            </li>
+            <li>
+                <a href="#projects">Work</a>
+            </li>
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+        </ul>
+    </nav>
+
+
+    <!-- Second Section-->
+
+    <section id="welcome-section">
+        <h1>Hey I'm Sana Momin</h1>
+        <p><i>an Android & Web Developer</i></p>
+
+        <p class="hero-cta">
+            <a class="cta-btn cta-btn--hero" href="#contact">Get in touch</a>
+          </p>
+
+    </section>
+
+    <section id="projects" class="project-section">
+        <h2 class="projects-section-header">My Project's</h2>
+
+        <div class="projects-grid">
+
+            <a href="https://calculator-sana-momin.netlify.app/" target="_blank" class="project project-tile">
+                <img class="project-image"
+                    src="https://raw.githubusercontent.com/momin-sana/Calculator/master/Screenshot%202024-07-01%20111729.png"
+                    alt="project" />
+                <p class="project-title">
+                    Calculator
+
+                </p>
+            </a>
+            <a href="" target="_blank" class="project project-tile">
+                <img class="project-image"
+                    src="https://github.com/lazy4gyan/Huddle-landing-page/blob/main/design/random.png?raw=true"
+                    alt="project" />
+                <p class="project-title">
+
+                    Sample Project
+
+                </p>
+            </a>
+            <a href="" target="_blank" class="project project-tile">
+                <img class="project-image"
+                    src="https://github.com/lazy4gyan/Frontend-Practice/blob/main/randomquote.png?raw=true"
+                    alt="project" />
+                <p class="project-title">
+
+                    Sample Project
+
+                </p>
+            </a>
+            <a href="" target="_blank" class="project project-tile">
+                <img class="project-image"
+                    src="https://github.com/lazy4gyan/Huddle-landing-page/blob/main/design/huddle.png?raw=true"
+                    alt="project" />
+                <p class="project-title">
+
+                    Sample Project
+
+                </p>
+            </a>
+        </div>
+    </section>
+
+
+    <!-- Third Section-->
+    
+<!-- START CONTACT SECTION -->
+
+    <section id="contact" class="contact-section">
+        <div class="contact-section-header">
+            <h2 id="con">Let's work together...</h2>
+            <p>If you would like to discuss a project or just want to say hi, my inbox is always open.</p>
+        </div>
+        <div class="form">
+            <form id="form" onsubmit="sendEmail(event)">
+                <input type="text" id="name" placeholder="Your Name" name="name" required /><br>
+                <input type="email" id="email" placeholder="Your Email Address" name="email" required /><br>
+                <textarea id="message" placeholder="Your Message" name="message" rows="4" cols="50" required></textarea><br>
+                <button type="submit" class="submit"><i class="fas fa-arrow-right"></i>Submit</button>
+            </form>
+
+            <!-- Popup for success message -->
+            <div id="success-popup" class="popup">
+                <p style="color: green;">Email sent successfully!</p>
+            </div>
+
+            <!-- Popup for error message -->
+            <div id="error-popup" class="popup">
+                <p style="color: red;">Please enter a valid email address.</p>
+            </div>            
+        </div>
+
+        <div class="contact-links">
+            <a
+              href="https://github.com/momin-sana"
+              title="github"
+              target="_blank"
+              class="btn contact-details"
+              ><i class="fa fa-github"></i></a>
+            <a
+              id="profile-link"
+              href="https://www.linkedin.com/in/momin-sana/"
+              title="linkedin"
+              target="_blank"
+              class="btn contact-details"
+              ><i class="fa fa-linkedin"></i></a>
+              
+        </div>
+    </section>
+
+
+    <!-- END CONTACT SECTION -->
+    <!-- START FOOTER SECTION -->
+
+    <footer>
+        <p id="foot">
+            &copy; <span id="year"></span> - Portfolio of
+            <a
+              href="https://momin-sana.github.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Sana Momin</a
+            > &hearts;
+        </p>
+    </footer>
+
+    <!-- END FOOTER SECTION -->
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("success-popup").style.display = "none";
+            document.getElementById("error-popup").style.display = "none";
+            
+            document.getElementById("year").textContent = new Date().getFullYear();
+
+            document.getElementById("form").onsubmit = function(event) {
+                event.preventDefault();
+                sendEmail(event);
+            };
+
+            function validateForm() {
+                var name = document.getElementById("name").value;
+                var email = document.getElementById("email").value;
+                var message = document.getElementById("message").value;
+
+                // Simple email validation
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email) || message.trim() === "" || name.trim() === "") {
+                    showPopup('error');
+                    return false; // Prevent form submission
+                } else {
+                return true; // Allow form submission
+                }
+            }
+
+            function sendEmail(event) {
+                event.preventDefault();
+
+                if (validateForm()) {
+
+                    emailjs.sendForm('service_sana17', 'template_sanamomin', '#form')
+                        .then(function (response) {
+                            console.log('SUCCESS!', response.status, response.text);
+                            document.getElementById("form").reset(); // Reset form fields
+                            showPopup('success');
+                        }, function (error) {
+                            console.log('FAILED...', error);
+                            showPopup('error');
+                        });
+                }
+            }
+
+            function showPopup(type) {
+                if (type === 'success') {
+                    document.getElementById("success-popup").style.display = "block";
+                    setTimeout(() => {
+                        document.getElementById("success-popup").style.display = "none";
+                    }, 3000); // Hide after 3 seconds
+                } else if (type === 'error') {
+                    document.getElementById("error-popup").style.display = "block";
+                    setTimeout(() => {
+                        document.getElementById("error-popup").style.display = "none";
+                    }, 3000); // Hide after 3 seconds
+                }
+            }
+        });
+
+        document.getElementById("year").textContent = new Date().getFullYear()
+    </script>
+
+</body>
+
+</html>
