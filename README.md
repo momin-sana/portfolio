@@ -62,7 +62,11 @@ Feel free to fill out the form in the contact section of my portfolio to get in 
 
 ## Getting Started
 
-To view my portfolio, simply clone this repository or download the files and open `index.html` in your web browser.
+To view my portfolio;
+
+  > You can simply visit my delopyed site [Sana Momin Portfolio](https://momin-sana.github.io/portfolio/).
+
+  > clone this repository or download the files and open `index.html` in your web browser.
 
 ### Clone the repository:
 
