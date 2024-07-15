@@ -74,15 +74,22 @@
             </a>
            
             <a href="https://momin-sana.github.io/Login-js/" target="_blank" class="project project-tile" rel="noopener noreferrer">
-                <img class="project-image"
-                    src="https://raw.githubusercontent.com/momin-sana/Login-js/main/Screenshot%202024-07-15%20140835.png"
-                    alt="project" />
+                <div class="project-single-container">
+                    <img class="project-image" src="https://raw.githubusercontent.com/momin-sana/Login-js/main/Screenshot%202024-07-15%20140835.png" alt="project" />
+                    <button class="play-button" type="button" title="Play Demo">▶</button>
+                </div>
                 <p class="project-title">
 
                     Login-js
 
                 </p>
             </a>
+            <!-- Modal for video popup -->
+            <div id="videoModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <iframe title="vimeo-player" src="https://player.vimeo.com/video/984310948?h=f40c86a78c" width="640" height="360" frameborder="0"    allowfullscreen></iframe>                </div>
+            </div>
         </div>
     </section>
 
@@ -165,6 +172,35 @@
                 event.preventDefault();
                 sendEmail(event);
             };
+
+            var playButtons = document.querySelectorAll('.play-button');
+            var modal = document.getElementById('videoModal');
+            var modalVideo = document.getElementById('modalVideo');
+            var closeButton = document.querySelector('.close-button');
+
+            modal.style.display = 'none';
+
+            playButtons.forEach(function(button) {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    modal.style.display = 'flex';
+                    modalVideo.play();
+                });
+            });
+
+            closeButton.addEventListener('click', function() {
+                modal.style.display = 'none';
+                modalVideo.pause();
+                modalVideo.currentTime = 0;
+            });
+
+            window.addEventListener('click', function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                    modalVideo.pause();
+                    modalVideo.currentTime = 0;
+                }
+            });
 
             function validateForm() {
                 var name = document.getElementById("name").value;
