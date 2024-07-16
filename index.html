@@ -53,6 +53,13 @@
 
         <div class="projects-grid">
 
+            <div id="videoModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <iframe id="vimeo-player" title="vimeo-player" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+
             <a href="https://calculator-sana-momin.netlify.app/" target="_blank" class="project project-tile" rel="noopener noreferrer">
                 <img class="project-image"
                     src="https://raw.githubusercontent.com/momin-sana/Calculator/master/Screenshot%202024-07-01%20111729.png"
@@ -62,34 +69,31 @@
 
                 </p>
             </a>
-             <a href="https://momin-sana.github.io/weather-js/" target="_blank" class="project project-tile" rel="noopener noreferrer">
+             <a href="https://momin-sana.github.io/weather-js/" 
+             target="_blank" 
+             class="project project-tile" 
+             rel="noopener noreferrer">
                 <img class="project-image"
                     src="https://raw.githubusercontent.com/momin-sana/weather-js/main/COVER.png"
                     alt="project" />
-                <p class="project-title">
-
+                    <button class="play-button" type="button" title="Play Demo" data-video="https://player.vimeo.com/video/984692669?h=146bee8eb5">▶</button>
+                    <p class="project-title">
                     Weather App - JS
-
                 </p>
             </a>
            
-            <a href="https://momin-sana.github.io/Login-js/" target="_blank" class="project project-tile" rel="noopener noreferrer">
+            <a href="https://momin-sana.github.io/Login-js/" 
+            target="_blank" 
+            class="project project-tile" 
+            rel="noopener noreferrer">
                 <div class="project-single-container">
                     <img class="project-image" src="https://raw.githubusercontent.com/momin-sana/Login-js/main/Screenshot%202024-07-15%20140835.png" alt="project" />
-                    <button class="play-button" type="button" title="Play Demo">▶</button>
+                    <button class="play-button" type="button" title="Play Demo" data-video="https://player.vimeo.com/video/984310948?h=f40c86a78c">▶</button>
                 </div>
                 <p class="project-title">
-
                     Login-js
-
                 </p>
             </a>
-            <!-- Modal for video popup -->
-            <div id="videoModal" class="modal">
-                <div class="modal-content">
-                    <span class="close-button">&times;</span>
-                    <iframe title="vimeo-player" src="https://player.vimeo.com/video/984310948?h=f40c86a78c" width="640" height="360" frameborder="0"    allowfullscreen></iframe>                </div>
-            </div>
         </div>
     </section>
 
@@ -174,17 +178,19 @@
             };
 
             var playButtons = document.querySelectorAll('.play-button');
-            var modal = document.getElementById('videoModal');
+            var modal = document.getElementById("videoModal");
+            var iframe = document.getElementById("vimeo-player");
             var modalVideo = document.getElementById('modalVideo');
-            var closeButton = document.querySelector('.close-button');
+            var closeButton = document.querySelector(".close-button");
 
             modal.style.display = 'none';
 
             playButtons.forEach(function(button) {
                 button.addEventListener('click', function(event) {
                     event.preventDefault();
+                    var videoUrl = button.getAttribute('data-video');
+                    iframe.src = videoUrl;
                     modal.style.display = 'flex';
-                    modalVideo.play();
                 });
             });
 
@@ -192,6 +198,7 @@
                 modal.style.display = 'none';
                 modalVideo.pause();
                 modalVideo.currentTime = 0;
+                iframe.src = ""; // Stop the video when modal is closed
             });
 
             window.addEventListener('click', function(event) {
@@ -199,6 +206,7 @@
                     modal.style.display = 'none';
                     modalVideo.pause();
                     modalVideo.currentTime = 0;
+                    iframe.src = ""; // Stop the video when modal is closed
                 }
             });
 

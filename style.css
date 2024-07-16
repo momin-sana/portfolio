@@ -166,7 +166,7 @@ a:hover {
 }
 
 .cta-btn:hover {
-    box-shadow: 1.5px 1.5px 3px rgba(174, 174, 192, 0.4);
+  box-shadow: 0 0 10px rgba(80, 0, 65, 0.8), 0 0 20px rgba(80, 0, 65, 0.6);
 }
 
 .cta-btn:hover::after {
@@ -227,8 +227,8 @@ a:hover {
   transition: all 2s, transform 0.5s, box_shadow 0.5s;
 }
 .project:hover {
-  box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.6);
-  transform: scale(1.08);
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.6);
+  transform: scale(1.05);
 }
 
 .play-button {
@@ -236,7 +236,7 @@ a:hover {
   align-self: center;
   top: 12px;
   right: 12px;
-  background: rgb(168, 140, 140);
+  background: #895981;
   color: #ddd;
   border: none;
   border-radius: 50%;
@@ -252,8 +252,10 @@ a:hover {
 }
 
 .play-button:hover{
-  background: rgb(0, 0, 0);
+  background: #500041;
   color: #ddd;
+  box-shadow: 0 0 10px rgba(80, 0, 65, 0.8), 0 0 20px rgba(80, 0, 65, 0.6);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
 }
 
 .project-image {
