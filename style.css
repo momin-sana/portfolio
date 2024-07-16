@@ -234,15 +234,15 @@ a:hover {
 .play-button {
   position: absolute;
   align-self: center;
-  top: 12px;
-  right: 12px;
+  top: 10px;
+  right: 10px;
   background: #895981;
   color: #ddd;
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  font-size: 18px;
+  width: 30px;
+  height: 30px;
+  font-size: 11px;
   cursor: pointer;
   display: none;
 }
