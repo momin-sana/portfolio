@@ -314,6 +314,22 @@ a:hover {
   height: 100%;
 }
 
+/* Rotate screen message styling */
+#rotate-message {
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 10000;
+  font-size: 14px;
+}
+
+
 /* Media query for small screens */
 @media (max-width: 30.625em) {
   .modal-content {
@@ -331,6 +347,10 @@ a:hover {
   #modalVideo {
     width: 100%; /* Ensure the video fills the modal content */
     height: auto; /* Maintain aspect ratio */
+  }
+
+  #rotate-message {
+    display: block; /* Show the rotate screen message */
   }
 }
 

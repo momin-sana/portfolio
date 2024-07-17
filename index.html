@@ -35,6 +35,10 @@
         </ul>
     </nav>
 
+<!-- Rotate Screen Message -->
+<div id="rotate-message" class="rotate-message">
+    Rotate your screen for a better view
+</div>
 
     <!-- Second Section-->
 
@@ -169,9 +173,7 @@
         document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("success-popup").style.display = "none";
             document.getElementById("error-popup").style.display = "none";
-            
-            document.getElementById("year").textContent = new Date().getFullYear();
-
+        
             document.getElementById("form").onsubmit = function(event) {
                 event.preventDefault();
                 sendEmail(event);
@@ -255,6 +257,22 @@
                     }, 3000); // Hide after 3 seconds
                 }
             }
+        
+
+            // Function to check screen size and show/hide rotate message
+            function showRotateMessage() {
+                const rotateMessage = document.getElementById("rotate-message");
+                rotateMessage.style.display = "block";
+                setTimeout(() => {
+                    rotateMessage.style.display = "none";
+                }, 3000); // Hide after 3 seconds
+            }
+
+            // Initial check
+            checkScreenSize();
+
+            // Add event listener for window resize
+            window.addEventListener("resize", checkScreenSize);
         });
 
         document.getElementById("year").textContent = new Date().getFullYear()
