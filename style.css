@@ -135,7 +135,34 @@ a:hover {
   align-items: center;
   width: 100%;
   height: 100vh;
-  background: linear-gradient(90deg, #fc46bc 0%, #1b84df 100%);
+  overflow: hidden;
+  /* background: linear-gradient(90deg, #fc46bc 0%, #1b84df 100%); */
+}
+
+#welcome-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(./bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(2px); /* Adjust blur effect */
+  opacity: 0.7; /* Adjust darken effect */
+  z-index: -1;
+}
+
+#welcome-section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Darken effect */
+  z-index: -1;
 }
 
 .cta-btn {
@@ -162,7 +189,7 @@ a:hover {
   left: -100%; /* Start off screen */
   top: 0;
   z-index: -1;
-  transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.6s;
+  transition: all cubic-bezier(0.19, 1, 0.22, 1) 3s;
 }
 
 .cta-btn:hover {
