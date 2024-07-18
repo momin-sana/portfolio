@@ -63,41 +63,56 @@
                     <iframe id="vimeo-player" title="vimeo-player" width="640" height="360" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
-
+            
             <a href="https://calculator-sana-momin.netlify.app/" target="_blank" class="project project-tile" rel="noopener noreferrer">
                 <img class="project-image"
                     src="https://raw.githubusercontent.com/momin-sana/Calculator/master/Screenshot%202024-07-01%20111729.png"
                     alt="project" />
                 <p class="project-title">
                     Calculator
-
                 </p>
+                
             </a>
+            <div class="description-right">
+                <p class="project-description">A calculator app built with React.js using React Hooks. App is madeup with basic styling and Calculator operations.</p>
+            </div>
+            
+            
+            <div class="description-left">
+                <p class="project-description">This Weather App allows users to check current weather conditions for a specific city or based on their device's location. It presents a clean and interactive interface using modern web technologies.</p>
+            </div>
+
              <a href="https://momin-sana.github.io/weather-js/" 
              target="_blank" 
-             class="project project-tile" 
+             class="project project-tile content-right" 
              rel="noopener noreferrer">
                 <img class="project-image"
                     src="https://raw.githubusercontent.com/momin-sana/weather-js/main/COVER.png"
-                    alt="project" />
-                    <button class="play-button" type="button" title="Play Demo" data-video="https://player.vimeo.com/video/984692669?h=146bee8eb5">▶</button>
-                    <p class="project-title">
+                    alt="project" 
+                />
+                <button class="play-button" type="button" title="Play Demo" data-video="https://player.vimeo.com/video/984692669?h=146bee8eb5">▶</button>
+                <p class="project-title">
                     Weather App - JS
-                </p>
+                </p>  
             </a>
+
+        
            
             <a href="https://momin-sana.github.io/Login-js/" 
-            target="_blank" 
-            class="project project-tile" 
-            rel="noopener noreferrer">
-                <div class="project-single-container">
-                    <img class="project-image" src="https://raw.githubusercontent.com/momin-sana/Login-js/main/Screenshot%202024-07-15%20140835.png" alt="project" />
-                    <button class="play-button" type="button" title="Play Demo" data-video="https://player.vimeo.com/video/984310948?h=f40c86a78c">▶</button>
-                </div>
+                target="_blank" 
+                class="project project-tile" 
+                rel="noopener noreferrer">
+                <img class="project-image" src="https://raw.githubusercontent.com/momin-sana/Login-js/main/Screenshot%202024-07-15%20140835.png" alt="project" />
+                <button class="play-button" type="button" title="Play Demo" data-video="https://player.vimeo.com/video/984310948?h=f40c86a78c">▶</button>
                 <p class="project-title">
                     Login-js
                 </p>
+                
             </a>
+            <div class="description-right">
+                <p class="project-description">This project implements a login and signup functionality using HTML, CSS, and JavaScript. It provides a user-friendly interface with animated transitions and error/success message handling.</p>
+            </div>
+          
         </div>
     </section>
 
@@ -186,6 +201,35 @@
             var closeButton = document.querySelector(".close-button");
 
             modal.style.display = 'none';
+
+            const projects = document.querySelectorAll(".content-right");
+            const descriptions = document.querySelectorAll(".description-left");
+
+            function arrangeProjects() {
+                projects.forEach((project, index) => {
+                    const description = descriptions[index];
+                    if (window.innerWidth <= 992) {
+                        // On small screens, ensure description is above content for odd-indexed projects
+                        if (index % 2 !== 0) {
+                            project.parentNode.insertBefore(description, project);
+                        } else {
+                            project.parentNode.insertBefore(project, description);
+                        }
+                    } else {
+                        // On larger screens, ensure descriptions and content alternate
+                        if (index % 2 !== 0) {
+                            project.parentNode.insertBefore(project, description);
+                        } else {
+                            project.parentNode.insertBefore(description, project);
+                        }
+                    }
+                });
+            }
+
+            window.addEventListener("resize", arrangeProjects);
+            arrangeProjects(); // Initial call to set the layout based on current window size
+        
+    
 
             playButtons.forEach(function(button) {
                 button.addEventListener('click', function(event) {
