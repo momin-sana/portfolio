@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
     
+    
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="style.css" />   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -17,7 +19,9 @@
             emailjs.init("PkpzQMlVfJGKBZwQw");
         })();
     </script>
-    
+      <script src="https://unpkg.com/scrollreveal"></script>
+      <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
 </head>
 
 <body>
@@ -26,6 +30,9 @@
             <li>
                 <a href="#welcome-section">About</a>
             </li>
+            <li>
+                <a href="#services">Service</a>
+                  </li>
             <li>
                 <a href="#projects">Work</a>
             </li>
@@ -52,8 +59,38 @@
 
     </section>
 
+    <section class="services"id="services">
+        <h2 class="heading">My<span> Services</span></h2>
+
+        <div class="services-container">
+            <div class="services-box">
+                <i class='bx bx-code-alt'></i>
+                <h3>Web Development</h3>
+                <p>Motivated designer and developer
+                     with experience creating custom websites through PHP and CSS. 
+                     Strong collaboration skills and proven history of application development. DHTML and JavaScript. MS Access and MySQL.</p>
+                <a href="#"class="btn">Read More</a>
+            </div>
+    
+            <div class="services-box">
+                <i class= 'bx bx-bug'></i>
+                <h3>Debugging</h3>
+                <p>Dolor repellendus temporibus autem quibusdam officiis debitis rerum neces aibus minima veniam.</p>
+                <a href="#"class="btn">Read More</a>
+            </div>
+        
+            <div class="services-box">
+                <i class='bx bx-crop' ></i>
+                <h3>App Design</h3>
+                <p>I'm UI/UX Designer with a great passion to my work. The main goal is to create modern, attractive and user-friendly interfaces and find creative and simple solutions for your business.
+                    </p>
+                <a href="#"class="btn">Read More</a>
+            </div>
+        </div>
+    </section>
+
     <section id="projects" class="project-section">
-        <h2 class="projects-section-header">My Project's</h2>
+        <h2 class="heading">My<span> Projects</span></h2>
 
         <div class="projects-grid">
 
@@ -71,48 +108,56 @@
                 <p class="project-title">
                     Calculator
                 </p>
+                <div class="portfolio-layer"> 
+                    <p>A calculator app built with React.js using React Hooks. App is madeup with basic styling and Calculator operations.</p>
+                </div>
                 
             </a>
-            <div class="description-right">
-                <p class="project-description">A calculator app built with React.js using React Hooks. App is madeup with basic styling and Calculator operations.</p>
-            </div>
             
-            
-            <div class="description-left">
-                <p class="project-description">This Weather App allows users to check current weather conditions for a specific city or based on their device's location. It presents a clean and interactive interface using modern web technologies.</p>
-            </div>
-
-             <a href="https://momin-sana.github.io/weather-js/" 
-             target="_blank" 
-             class="project project-tile content-right" 
-             rel="noopener noreferrer">
-                <img class="project-image"
-                    src="https://raw.githubusercontent.com/momin-sana/weather-js/main/COVER.png"
-                    alt="project" 
-                />
-                <button class="play-button" type="button" title="Play Demo" data-video="https://player.vimeo.com/video/984692669?h=146bee8eb5">▶</button>
-                <p class="project-title">
-                    Weather App - JS
-                </p>  
-            </a>
-
-        
-           
             <a href="https://momin-sana.github.io/Login-js/" 
                 target="_blank" 
                 class="project project-tile" 
                 rel="noopener noreferrer">
                 <img class="project-image" src="https://raw.githubusercontent.com/momin-sana/Login-js/main/Screenshot%202024-07-15%20140835.png" alt="project" />
-                <button class="play-button" type="button" title="Play Demo" data-video="https://player.vimeo.com/video/984310948?h=f40c86a78c">▶</button>
                 <p class="project-title">
                     Login-js
                 </p>
-                
+                <div class="portfolio-layer"> 
+                    <p>This project implements a login and signup functionality using HTML, CSS, and JavaScript. It provides a user-friendly interface with animated transitions and error/success message handling.</p>
+                </div>
+                <button class="play-button" type="button" title="Play Demo" data-video="https://player.vimeo.com/video/984310948?h=f40c86a78c">▶</button>
             </a>
-            <div class="description-right">
-                <p class="project-description">This project implements a login and signup functionality using HTML, CSS, and JavaScript. It provides a user-friendly interface with animated transitions and error/success message handling.</p>
-            </div>
-          
+
+            <a href="https://momin-sana.github.io/weather-js/" 
+                target="_blank" 
+                class="project project-tile" 
+                rel="noopener noreferrer">
+                <img class="project-image"
+                    src="https://raw.githubusercontent.com/momin-sana/weather-js/main/COVER.png"
+                    alt="project" 
+                />
+                <p class="project-title">
+                    Weather App - JS
+                </p> 
+                <div class="portfolio-layer">
+                    <p>This Weather App allows users to check current weather conditions for a specific city or based on their device's location. It presents a clean and interactive interface using modern web technologies.</p>
+                </div>
+                <button class="play-button" type="button" title="Play Demo" data-video="https://player.vimeo.com/video/984692669?h=146bee8eb5">▶</button>
+            </a>
+            
+            <a href="https://momin-sana.github.io/responsive-card-slider/" 
+                target="_blank" 
+                class="project project-tile" 
+                rel="noopener noreferrer">
+                <img class="project-image" src="https://raw.githubusercontent.com/momin-sana/responsive-card-slider/main/cover.png" alt="project" />
+                <p class="project-title">
+                    Responsive Card Silder
+                </p>
+                <div class="portfolio-layer"> 
+                    <p>This project is a responsive card slider with a loading screen, background GIF, animated heading, and interactive cards using Swiper.js. The project uses HTML, CSS, and JavaScript to create a visually appealing and interactive user experience.</p>
+                </div>
+                <button class="play-button" type="button" title="Play Demo" data-video="https://player.vimeo.com/video/988370064?h=23b9509917">▶</button>
+            </a>
         </div>
     </section>
 
@@ -229,7 +274,6 @@
             window.addEventListener("resize", arrangeProjects);
             arrangeProjects(); // Initial call to set the layout based on current window size
         
-    
 
             playButtons.forEach(function(button) {
                 button.addEventListener('click', function(event) {
@@ -317,8 +361,9 @@
 
             // Add event listener for window resize
             window.addEventListener("resize", checkScreenSize);
-        });
 
+    
+        });
         document.getElementById("year").textContent = new Date().getFullYear()
     </script>
 

@@ -27,31 +27,25 @@
   box-sizing: inherit;
 }
 
+:root {
+  --bg-color:#1f242d;
+  --second-bg-color:#323946;
+  --text-color:#fff;
+  --main-color:#0ef; 
+}
+
 html {
   box-sizing: border-box;
   font-size: 62.5%;
   scroll-behavior: smooth;
 }
 
-@media (max-width: 75em) {
-  html {
-    font-size: 60%;
-  }
-}
 
-@media (max-width: 61.25em) {
-  html {
-    font-size: 58%;
-  }
-}
-
-@media (max-width: 28.75em) {
-  html {
-    font-size: 55%;
-  }
-}
-
+/* ####################################################################### */
+/* ####################################################################### */
 /* Base styling */
+/* ####################################################################### */
+/* ####################################################################### */
 
 body {
   font-family: "Poppins", sans-serif;
@@ -91,19 +85,50 @@ p {
   color: #e1bee7;
 }
 
+@keyframes slideInUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.animate-slideInUp {
+  animation: slideInUp 1s ease-out forwards;
+}
+
+/* Ensure elements are initially hidden */
+.contact-section .form input,
+.contact-section .form textarea,
+.contact-section .form .submit,
+.contact-section .contact-links a {
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+
+/* ####################################################################### */
+/* ####################################################################### */
 /* Navigation Bar Styling */
+/* ####################################################################### */
+/* ####################################################################### */
 
 .nav {
-  display: flex;
-  justify-content: flex-end;
+  width: 100%;
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9;
   background: #57005a;
-  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
-  z-index: 10;
 }
 
 li {
@@ -126,7 +151,12 @@ a:hover {
   color: #ff9f5c;
 }
 
-/* Section 1 Styling*/
+
+/* ####################################################################### */
+/* ####################################################################### */
+/* About Section */
+/* ####################################################################### */
+/* ####################################################################### */
 
 #welcome-section {
   display: flex;
@@ -202,36 +232,98 @@ a:hover {
 }
 
 
-/* Section 2*/
+/* ####################################################################### */
+/* ####################################################################### */
+/* SERVICE Section */
+/* ####################################################################### */
+/* ####################################################################### */
+.heading{
+  margin-bottom: 5rem;
+  max-width: 100%;
+  margin: 4rem auto 3rem auto;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  word-spacing: 3px;
+  letter-spacing: 2px;
+  box-shadow: 0 5px 20px #500049;
+
+}
+.services-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.services-container .services-box {
+  flex: 1 1 30rem;
+  background: var(--second-bg-color);
+  padding: 3rem 2rem 4rem;
+  border-radius: 2rem;
+  text-align: center;
+  border: .2rem solid var(--bg-color);
+  transition: .5s ease;
+}
+.services-container .services-box:hover{
+  border-color: var(--main-color);
+  transform: scale(1.02);
+}
+.services-box i{
+  font-size: 7rem;
+  color: var(--main-color);
+}
+.services-box h3{
+  font-size: 2.6rem;
+}
+.services-box p{
+  font-size: 1.6rem;
+  margin: 1rem 0 3rem;
+}
+.services-box a {
+ color: #000; /* Default link color */
+ position: relative;
+ display: inline-block;
+ text-decoration: none;
+}
+.services-box a:hover {
+ color: #6f34fe;
+}
+.services-box a::after {
+ content: '';
+ position: absolute;
+ left: 0;
+ bottom: -2px; /* Adjust as needed */
+ width: 100%;
+ height: 2px; /* Adjust as needed */
+ background-color: #6f34fe;
+ transform: scaleX(0);
+ transform-origin: left;
+ transition: transform 0.3s ease;
+}
+
+.services-box a:hover::after {
+ transform: scaleX(1);
+}
+
+
+/* ####################################################################### */
+/* ####################################################################### */
+/* Project Section */
+/* ####################################################################### */
+/* ####################################################################### */
 
 .projects-section {
   text-align: center;
   padding: 10rem 2rem;
   background: #eceff1;
 }
-.projects-section-header {
-  max-width: 100%;
-  margin: 4rem auto 3rem auto;
-  border-bottom: 1px solid rgb(168, 140, 140);
-  padding-top: 0.2rem;
-  padding-bottom: 0.2rem;
-  border-radius: 38px;
-  word-spacing: 3px;
-  letter-spacing: 2px;
-  box-shadow: 0 5px 20px #500049;
-}
+
 @media (max-width: 28.75em) {
   .projects-section-header {
     font-size: 4rem;
   }
   .projects-section {
     padding: 3rem 1rem;
-  }
-
-  .projects-grid {
-    grid-template-columns: 1fr;
-    row-gap: 2rem;
-    column-gap: 3rem;
   }
 }
 
@@ -250,38 +342,9 @@ a:hover {
   justify-items: center;
 }
 
-@media (max-width: 30.625em) {
-  .projects-section {
-    padding: 3rem 1rem;
-  }
-
-  .projects-grid {
-    grid-template-columns: 1fr;
-    row-gap: 2rem;
-    column-gap: 3rem;
-  }
-}
-@media (max-width: 992px) {
-  .projects-grid {
-      grid-template-columns: 1fr;
-      row-gap: 3rem;
-      column-gap: 3rem; 
-  }
-  .project {
-      grid-template-columns: 1fr; /* Stack image and description vertically */
-  }
-  .project:nth-child(odd) .project-description {
-      order: 1;
-  }
-  .project:nth-child(odd) .project-image {
-      order: 2;
-  }
-  .project-description{
-    padding-bottom: 5px;
-    margin-bottom: 5px;
-  }
-}
 .project {
+   position: relative;
+  display: inline-block;
   background: #500049;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   border-radius: 28px;
@@ -297,6 +360,7 @@ a:hover {
 }
 
 .project-image {
+  display: block;
   height: calc(100% - 6.8rem);
   width: 100%;
   object-fit: cover;
@@ -311,12 +375,50 @@ a:hover {
   padding: 2rem 0.5rem;
   color: #fff;
   text-transform: uppercase;
+  position: relative;
+  padding: 10px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.project-description{
-  padding-inline-start: 20px;
-  color: #500049;
+.portfolio-layer {
+  border-radius: 28px;
+  position: absolute;
+  padding: 8px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  display: flex;
+  align-items: end;
+  justify-content: flex-start;
+  text-align: center;
+  opacity: 0;
+
+  background: linear-gradient(180deg, #50004175 0%, #24001e 100%);  /* semi-transparent background only for text area */ 
+  transition: opacity 0.3s ease, transform 0.5s ease;
+  transform: translateY(100%); /* Start hidden below the container */
 }
+.portfolio-layer p{
+  padding-bottom: 25px;
+  text-align: center;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.project:hover .portfolio-layer {
+  top: 0;
+  opacity: 1;
+  transform: translateY(0);
+  animation: slideIn 1.0s ease forwards;
+}
+
 
 .play-button {
   position: absolute;
@@ -348,7 +450,7 @@ a:hover {
 
 
 
-/* Modal styling */
+/* Video Modal styling */
 .modal {
   display: none; /* Hidden by default */
   position: fixed;
@@ -401,38 +503,19 @@ a:hover {
   font-size: 12px;
 }
 
-
-/* Media query for small screens */
-@media (max-width: 30.625em) {
-  .modal-content {
-    width: 100%; /* Make the modal content full width */
-    max-width: 100%; /* Ensure it doesn't exceed the screen width */
-    height: auto; /* Let the content adjust its height */
-  }
-
-  .close-button {
-    top: 5px; /* Adjust the position of the close button */
-    right: 10px;
-    font-size: 25px; /* Adjust the font size of the close button */
-  }
-
-  #modalVideo {
-    width: 100%; /* Ensure the video fills the modal content */
-    height: auto; /* Maintain aspect ratio */
-  }
-
-  #rotate-message {
-    display: block; /* Show the rotate screen message */
-  }
-}
-
 .btn {
   display: inline-block;
   padding: 1rem 2rem;
   border-radius: 2px;
 }
 
+
+/* ####################################################################### */
+/* ####################################################################### */
 /* Contact section */
+/* ####################################################################### */
+/* ####################################################################### */
+
 .contact-section {
   display: flex;
   flex-direction: column;
@@ -474,16 +557,13 @@ a:hover {
 
 .contact-section-header > h2 {
   font-size: 6rem;
+  transition: transform 1s ease-in-out;
 }
 #con {
   color: #fff;
   border: none;
 }
-@media (max-width: 28.75em) {
-  .contact-section-header > h2 {
-    font-size: 4rem;
-  }
-}
+
 .contact-links {
   display: flex;
   justify-content: center;
@@ -491,6 +571,7 @@ a:hover {
   max-width: 980px;
   margin-top: 2.5rem;
   flex-wrap: wrap;
+  transition: transform 1s ease-in-out;
 
   a {
     text-decoration: none;
@@ -503,8 +584,9 @@ a:hover {
   .contact-details {
     font-size: 2.8rem;
     text-shadow: 2px 2px 1px #1f1f1f;
-    transition: all ease-in-out 0.2s;
+    transition: transform 1s ease-in-out;
   }
+
   .contact-details:hover {
     transform: scale(1.1) translateY(-2px);
     .fa-linkedin {
@@ -522,6 +604,7 @@ a:hover {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  transition: transform 1s ease-in-out;
 }
 .popup {
   position: fixed;
@@ -557,6 +640,7 @@ a:hover {
   border-radius: 28px;
   text-align: center;
   outline: none;
+  transition: transform 1s ease-in-out;
 }
 
 #email {
@@ -570,6 +654,7 @@ a:hover {
   border-radius: 28px;
   text-align: center;
   outline: none;
+  transition: transform 1s ease-in-out;
 }
 #message {
   max-width: 300px;
@@ -582,6 +667,7 @@ a:hover {
   border-radius: 18px;
   text-align:left;
   outline: none;
+  transition: transform 1s ease-in-out;
 }
 .submit {
   max-width: 200px;
@@ -595,7 +681,7 @@ a:hover {
   color: white; 
   border: none;
   cursor: pointer; 
-  transition: all 0.5s; 
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 
 .submit:hover {
@@ -605,8 +691,20 @@ a:hover {
   transform: scale(1.04);
 }
 
+.contact-animation {
+  opacity: 1;
+  transform: translateY(0);}
 
+.contact-initial {
+  transform: translateY(100px);
+}
+
+/* ####################################################################### */
+/* ####################################################################### */
 /* Footer Section */
+/* ####################################################################### */
+/* ####################################################################### */
+
 footer {
   font-weight: 100;
   display: flex;
@@ -630,4 +728,35 @@ footer {
 }
 #fot:hover {
   color: #ff9f5c;
+}
+
+/* ####################################################################### */
+/* ####################################################################### */
+
+/* ####################################################################### */
+/* ####################################################################### */
+/* Media quries */
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  }
+
+  .services-container .services-box {
+    flex: 1 1 45rem;
+  }
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 5rem;
+  }
+
+  h2 {
+    font-size: 3.6rem;
+  }
+
+  .services-container .services-box {
+    flex: 1 1 90%;
+  }
 }
