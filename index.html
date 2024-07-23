@@ -167,6 +167,20 @@
                 </div>
                 <button class="play-button" type="button" title="Play Demo" data-video="https://player.vimeo.com/video/988370064?h=23b9509917">▶</button>
             </a>
+            <a href="https://player.vimeo.com/video/988832206?h=ba6e691747" 
+                target="_blank" 
+                class="project project-tile" 
+                rel="noopener noreferrer">
+                <img class="project-image" src="https://raw.githubusercontent.com/momin-sana/FindMeaning/master/COVER.jpg" alt="project" />
+                <p class="project-title">
+                    Find Meaning - Android Java 
+                </p>
+                <div class="portfolio-layer"> 
+                    <p>FindMeaning is a dictionary app that uses Retrofit to fetch data from an API. The data includes a list of phonetics with audio. Here words can be bookmarked and the history of searched words will be stored in Database. An Internet connection is mandatory to access the meaning of words.</p>
+                </div>
+                <button class="play-button" type="button" title="Play Demo" data-video="https://player.vimeo.com/video/988832206?h=ba6e691747">▶</button>
+            </a>
+
         </div>
     </section>
 
@@ -396,11 +410,6 @@
                 modal.style.display = "none";
             }
 
-            // Add event listener to close button
-            document.querySelector(".close-button").addEventListener("click", hideModal);
-
-            // Example function to show modal (bind this to your open modal button or event)
-            document.querySelector(".open-modal-button").addEventListener("click", showModal);
 
             // Initial check
             checkScreenSize();
@@ -408,19 +417,6 @@
             // Add event listener for window resize
             window.addEventListener("resize", checkScreenSize);
 
-            //Orientation
-            function setVH() {
-                let vh = window.innerHeight * 0.01;
-                document.documentElement.style.setProperty('--vh', `${vh}px`);
-            }
-
-            window.addEventListener('resize', setVH);
-            window.addEventListener('orientationchange', setVH);
-
-            // Initial setting
-            setVH();
-
-    
         });
         document.getElementById("year").textContent = new Date().getFullYear()
     </script>
