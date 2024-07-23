@@ -243,26 +243,25 @@
             document.getElementById("success-popup").style.display = "none";
             document.getElementById("error-popup").style.display = "none";
         
-            document.getElementById("form").onsubmit = function(event) {
-                event.preventDefault();
-                sendEmail(event);
-            };
-
             var playButtons = document.querySelectorAll('.play-button');
             var modal = document.getElementById("videoModal");
             var iframe = document.getElementById("vimeo-player");
             var modalVideo = document.getElementById('modalVideo');
             var closeButton = document.querySelector(".close-button");
-
-            modal.style.display = 'none';
-
             const projects = document.querySelectorAll(".content-right");
             const descriptions = document.querySelectorAll(".description-left");
+
+
+            modal.style.display = 'none';
 
             document.getElementById('burger-menu').addEventListener('click', function() {
                 document.getElementById('nav-links').classList.toggle('active');
             });
 
+            document.getElementById("form").onsubmit = function(event) {
+                event.preventDefault();
+                sendEmail(event);
+            };
             function arrangeProjects() {
                 projects.forEach((project, index) => {
                     const description = descriptions[index];
@@ -360,7 +359,7 @@
             }
         
 
-            // Function to check screen size and show/hide rotate message
+          // Function to show rotate message
             function showRotateMessage() {
                 const rotateMessage = document.getElementById("rotate-message");
                 rotateMessage.style.display = "block";
@@ -368,6 +367,43 @@
                     rotateMessage.style.display = "none";
                 }, 3000); // Hide after 3 seconds
             }
+
+            // Function to check screen orientation and apply styles
+            function checkScreenSize() {
+                const modalVideo = document.getElementById("modalVideo");
+                if (window.innerHeight > window.innerWidth) {
+                    // Portrait mode
+                    modalVideo.style.width = "100%";
+                    modalVideo.style.height = "auto";
+                    showRotateMessage();
+                } else {
+                    // Landscape mode
+                    modalVideo.style.width = "auto";
+                    modalVideo.style.height = "100%";
+                }
+            }
+
+            // Event listener for orientation change
+            window.addEventListener("orientationchange", checkScreenSize);
+
+            // Show modal and check screen size on open
+            function showModal() {
+                const modal = document.getElementById("videoModal");
+                modal.style.display = "flex";
+                checkScreenSize();
+            }
+
+            // Hide modal
+            function hideModal() {
+                const modal = document.getElementById("videoModal");
+                modal.style.display = "none";
+            }
+
+            // Add event listener to close button
+            document.querySelector(".close-button").addEventListener("click", hideModal);
+
+            // Example function to show modal (bind this to your open modal button or event)
+            document.querySelector(".open-modal-button").addEventListener("click", showModal);
 
             // Initial check
             checkScreenSize();
