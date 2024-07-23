@@ -408,6 +408,18 @@
             // Add event listener for window resize
             window.addEventListener("resize", checkScreenSize);
 
+            //Orientation
+            function setVH() {
+                let vh = window.innerHeight * 0.01;
+                document.documentElement.style.setProperty('--vh', `${vh}px`);
+            }
+
+            window.addEventListener('resize', setVH);
+            window.addEventListener('orientationchange', setVH);
+
+            // Initial setting
+            setVH();
+
     
         });
         document.getElementById("year").textContent = new Date().getFullYear()
