@@ -17,9 +17,12 @@
     <script type="text/javascript">
         (function() {
             emailjs.init("PkpzQMlVfJGKBZwQw");
-        })();</script>
-    <script src="https://unpkg.com/scrollreveal"></script>
+        })();
+    </script>
+    Typed Library
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <!-- ScrollReveal Library -->
+    <script src="https://unpkg.com/scrollreveal"></script>
 
 </head>
 
@@ -51,10 +54,10 @@
         </ul>
     </nav>
 
-<!-- Rotate Screen Message -->
-<div id="rotate-message" class="rotate-message">
-    Rotate your screen for a better view
-</div>
+    <!-- Rotate Screen Message -->
+    <div id="rotate-message" class="rotate-message">
+        Rotate your screen for a better view
+    </div>
 
     <!-- Second Section-->
 
@@ -254,53 +257,44 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            document.getElementById("success-popup").style.display = "none";
-            document.getElementById("error-popup").style.display = "none";
-        
+
+        // Get elements from the DOM
             var playButtons = document.querySelectorAll('.play-button');
             var modal = document.getElementById("videoModal");
             var iframe = document.getElementById("vimeo-player");
             var modalVideo = document.getElementById('modalVideo');
             var closeButton = document.querySelector(".close-button");
-            const projects = document.querySelectorAll(".content-right");
-            const descriptions = document.querySelectorAll(".description-left");
 
 
+        // Hide success and error popups initially
+            document.getElementById("success-popup").style.display = "none";
+            document.getElementById("error-popup").style.display = "none";
+
+        // Hide the modal initially
             modal.style.display = 'none';
 
+
+        // Toggle the navigation links when the burger menu is clicked
             document.getElementById('burger-menu').addEventListener('click', function() {
                 document.getElementById('nav-links').classList.toggle('active');
             });
 
+        // Initialize ScrollReveal for the service boxes
+            ScrollReveal().reveal('.services-box', {
+                duration: 1000,
+                scale: 0.85,
+                distance: '50px',
+                easing: 'ease-out',
+                interval: 200
+            });
+
+        // Handle form submission
             document.getElementById("form").onsubmit = function(event) {
                 event.preventDefault();
                 sendEmail(event);
             };
-            function arrangeProjects() {
-                projects.forEach((project, index) => {
-                    const description = descriptions[index];
-                    if (window.innerWidth <= 992) {
-                        // On small screens, ensure description is above content for odd-indexed projects
-                        if (index % 2 !== 0) {
-                            project.parentNode.insertBefore(description, project);
-                        } else {
-                            project.parentNode.insertBefore(project, description);
-                        }
-                    } else {
-                        // On larger screens, ensure descriptions and content alternate
-                        if (index % 2 !== 0) {
-                            project.parentNode.insertBefore(project, description);
-                        } else {
-                            project.parentNode.insertBefore(description, project);
-                        }
-                    }
-                });
-            }
 
-            window.addEventListener("resize", arrangeProjects);
-            arrangeProjects(); // Initial call to set the layout based on current window size
-        
-
+        // Open the modal and play the video when a play button is clicked
             playButtons.forEach(function(button) {
                 button.addEventListener('click', function(event) {
                     event.preventDefault();
@@ -310,6 +304,7 @@
                 });
             });
 
+        // Close the modal when the close button is clicked
             closeButton.addEventListener('click', function() {
                 modal.style.display = 'none';
                 modalVideo.pause();
@@ -317,6 +312,7 @@
                 iframe.src = ""; // Stop the video when modal is closed
             });
 
+        // Close the modal when clicking outside of it
             window.addEventListener('click', function(event) {
                 if (event.target == modal) {
                     modal.style.display = 'none';
@@ -326,6 +322,7 @@
                 }
             });
 
+        // Validate form fields
             function validateForm() {
                 var name = document.getElementById("name").value;
                 var email = document.getElementById("email").value;
@@ -341,6 +338,7 @@
                 }
             }
 
+        // Send email using EmailJS
             function sendEmail(event) {
                 event.preventDefault();
 
@@ -358,6 +356,7 @@
                 }
             }
 
+        // Show success or error popup
             function showPopup(type) {
                 if (type === 'success') {
                     document.getElementById("success-popup").style.display = "block";
@@ -372,8 +371,7 @@
                 }
             }
         
-
-          // Function to show rotate message
+        // Function to show rotate message
             function showRotateMessage() {
                 const rotateMessage = document.getElementById("rotate-message");
                 rotateMessage.style.display = "block";
@@ -381,42 +379,6 @@
                     rotateMessage.style.display = "none";
                 }, 3000); // Hide after 3 seconds
             }
-
-            // Function to check screen orientation and apply styles
-            function checkScreenSize() {
-                const modalVideo = document.getElementById("modalVideo");
-                if (window.innerHeight > window.innerWidth) {
-                    // Portrait mode
-                    modalVideo.style.width = "100%";
-                    modalVideo.style.height = "auto";
-                    showRotateMessage();
-                } else {
-                    // Landscape mode
-                    modalVideo.style.width = "auto";
-                    modalVideo.style.height = "100%";
-                }
-            }
-
-            // Show modal and check screen size on open
-            function showModal() {
-                const modal = document.getElementById("videoModal");
-                modal.style.display = "flex";
-                checkScreenSize();
-            }
-
-            // Hide modal
-            function hideModal() {
-                const modal = document.getElementById("videoModal");
-                modal.style.display = "none";
-            }
-
-
-            // Initial check
-            checkScreenSize();
-
-            // Add event listener for window resize
-            window.addEventListener("resize", checkScreenSize);
-
         });
         document.getElementById("year").textContent = new Date().getFullYear()
     </script>
