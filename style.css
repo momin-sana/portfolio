@@ -229,7 +229,7 @@ a:hover {
   margin: 4rem;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   flex-wrap: wrap;
   gap: 2rem;
 }
@@ -241,6 +241,9 @@ a:hover {
   text-align: center;
   border: .2rem solid #500049;
   transition: .5s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .services-container .services-box:hover{
@@ -408,21 +411,36 @@ a:hover {
   animation: slideIn 1.0s ease forwards;
 }
 
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 #ff9f5c;
+  }
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px 10px rgba(80, 47, 74, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(137, 89, 129, 0);
+  }
+}
 
 .play-button {
   position: absolute;
   align-self: center;
-  top: 10px;
-  right: 10px;
+  top: 20px;
+  right: 20px;
   background: #895981;
   color: #ddd;
   border: none;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  font-size: 11px;
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
   cursor: pointer;
   display: none; /* Hide the play button initially */
+  animation: pulse 2s infinite;
 }
 
 .play-button:hover{
@@ -741,19 +759,37 @@ footer {
   .projects-grid {
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); /* Adjust the columns */
   }
+  .play-button{
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
 }
 
 @media (max-width: 1024px) {
   /* body{
     background-color: #803700;
   } */
-  .projects-grid {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Adjust the columns */
-  }
-
   .services-container .services-box {
     flex: 1 1 40rem; /* Adjust the flex-basis */
   }
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Adjust the columns */
+  }
+  .portfolio-layer p{
+    font-size: 1.4rem;
+    text-align: center;
+  }
+  .play-button{
+    top: 10px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+  
 }
 
 @media (max-width: 768px) {
@@ -761,10 +797,10 @@ footer {
     background-color: #008024;
   } */
 
-  .services-container .services-box {
-    flex: 1 1 35rem; /* Adjust the flex-basis */
+  .projects-grid {
+    grid-template-columns: 1fr; /* Single column layout */
   }
-
+  
   .portfolio-layer p{
     font-size: 1.6rem;
     text-align: center;
@@ -868,6 +904,7 @@ footer {
     font-size: 1.5rem;
     text-align: center;
   }
+  
   .contact-section-header > h2 {
     font-size: 4.5rem;
   }
@@ -929,7 +966,10 @@ footer {
   .services-container .services-box {
     flex: 1 1 75%; /* Adjust the flex-basis */
   }
-
+  
+  .project-title{
+    font-size: 1.2rem;
+  }
   .portfolio-layer p{
     font-size: 1.2rem;
     text-align: center;
