@@ -80,7 +80,7 @@ h2 {
   justify-content: center;
   align-items: center;
   z-index: 9;
-  background: #57005a;
+  background: rgb(40, 0, 42);
 }
 
 
@@ -716,7 +716,7 @@ footer {
   display: flex;
   justify-content: space-evenly;
   padding: 2rem;
-  background: #57005a;
+  background: rgb(40, 0, 42);
   border-top: 4px solid #bfc8ea;
 }
 #foot {
