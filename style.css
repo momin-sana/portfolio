@@ -1,6 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda&family=Raleway&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Poppins&display=swap");
 
+/* CSS Variables for Color Scheme */
+:root {
+  --primary-color: #f9eae0;
+  --accent-color: #ff9f5c;
+  --dark-background: #2c002d;
+  --highlight-color: #500049;
+  --hover-color: #6f34fe;
+  --gradient-start: #36d1dc;
+  --gradient-end: #5b86e5;
+  --muted-bg: rgba(0, 0, 0, 0.5);
+  --muted-text: #e1bee7;
+  --border-color: #500049;
+  --shadow-color: rgba(80, 0, 65, 0.8);
+  --secondary-bg: #77106f83;
+  --card-bg: #50004175;
+  --highlight-shadow: rgba(255, 255, 255, 0.8);
+}
+
 /* Base reset */
 * {
   margin: 0;
@@ -34,7 +52,7 @@ body {
   font-size: 1.8rem;
   font-weight: 400;
   line-height: 1.4;
-  color: #f9eae0;
+  color: var(--primary-color);
   width: 100%;
 }
 
@@ -48,11 +66,12 @@ h2 {
   font-family: "Raleway", sans-serif;
   font-weight: 700;
   text-align: center;
+  transition: all 0.3s ease;
 }
 
 h1 {
   font-size: 4.5rem;
-  background: -webkit-radial-gradient(#ffb7f9, #c500d6);
+  background: -webkit-radial-gradient(var(--accent-color), var(--highlight-color));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -60,10 +79,13 @@ h1 {
 h2 {
   font-size: 4.0rem;
   font-weight: bolder;
-  color: #57005a;
+  color: var(--highlight-color);
   border: 0.5px solid #ddd;
 }
 
+h1:hover, h2:hover {
+  font-weight: 800;
+}
 
 /* ####################################################################### */
 /* ####################################################################### */
@@ -80,7 +102,7 @@ h2 {
   justify-content: center;
   align-items: center;
   z-index: 9;
-  background: #2c002d;
+  background: var(--dark-background);
 }
 
 
@@ -98,16 +120,17 @@ a {
   margin-left: 1.5em;
   margin-right: 1.5em;
   font-size: 1em;
-  color: #f9eae0;
+  color: var(--primary-color);
 }
+
 a:hover {
-  color: #ff9f5c;
+  color: var(--accent-color);
 }
 
 .navbar-brand a {
   text-decoration: none;
   font-size: 2rem;
-  color: #f9eae0;
+  color: var(--primary-color);
 }
 
 /* Burger Menu Styles */
@@ -121,7 +144,7 @@ a:hover {
   margin-bottom: 	0.625rem;
   width: 	2.575rem;
   height: 	0.19375rem;
-  background-color: #f9eae0;
+  background-color: var(--primary-color);
 }
 
 
@@ -163,13 +186,13 @@ a:hover {
   left: 0;
   width: 100%;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.5); /* Darken effect */
+  background: var(--muted-bg);
   z-index: -1;
 }
 
 #welcome-section p{
   font-size: 	2.375rem;
-  color: #e1bee7;
+  color: var(--muted-text);
 }
 
 .cta-btn {
@@ -183,14 +206,14 @@ a:hover {
   overflow: hidden;
   display: inline-block; 
   text-decoration: none;
-  color: #f9eae0;
-  background-color: #1f1f1f13;
+  color: var(--primary-color);
+  background-color: #00000016;
 }
 
 .cta-btn::after {
   content: "";
   position: absolute;
-  background-image: linear-gradient(135deg, #36d1dc 0%, #5b86e5 100%);
+  background-image: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
   width: 0;
   height: 100%;
   left: -100%; /* Start off screen */
@@ -200,7 +223,7 @@ a:hover {
 }
 
 .cta-btn:hover {
-  box-shadow: 0 0 10px rgba(80, 0, 65, 0.8), 0 0 20px rgba(80, 0, 65, 0.6);
+  box-shadow: 0 0 10px var(--highlight-shadow);
 }
 
 .cta-btn:hover::after {
@@ -222,8 +245,7 @@ a:hover {
   padding-bottom: 0.2rem;
   word-spacing: 3px;
   letter-spacing: 2px;
-  box-shadow: 0 5px 20px #500049;
-
+  box-shadow: 0 5px 20px var(--highlight-color);
 }
 .services-container{
   margin: 4rem;
@@ -235,21 +257,21 @@ a:hover {
 }
 .services-container .services-box {
   flex: 1 1 30rem;
-  background: #77106f83;
+  background: var(--secondary-bg);
   padding: 3rem 2rem 4rem;
   border-radius: 2rem;
   text-align: center;
-  border: .2rem solid #500049;
-  transition: .5s ease;
+  border: 0.2rem solid var(--border-color);
+  transition: 0.5s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.services-container .services-box:hover{
-  border-color: #500049;
+.services-container .services-box:hover {
+  border-color: var(--border-color);
   transform: scale(1.02);
-  box-shadow: 0 0 5px rgba(80, 0, 65, 0.8), 0 0 20px rgba(80, 0, 65, 0.6);
+  box-shadow: 0 0 5px var(--highlight-shadow), 0 0 20px var(--highlight-shadow);
 }
 
 .services-container .services-box:hover i {
@@ -258,30 +280,31 @@ a:hover {
 }
 
 
-.services-box i{
+.services-box i {
   font-size: 7rem;
-  color: #500049;
+  color: var(--border-color);
 }
 
-.services-box h3{
+.services-box h3 {
   font-size: 2.6rem;
   font-weight: bolder;
-  text-shadow: #500049;
+  text-shadow: var(--border-color);
 }
 
-.services-box p{
+.services-box p {
   font-size: 1.6rem;
   margin: 1rem 0 3rem;
-  color: #500049;
+  color: var(--border-color);
 }
+
 .services-box a {
- color: #500049; /* Default link color */
+  color: var(--border-color);
  position: relative;
  display: inline-block;
  text-decoration: none;
 }
 .services-box a:hover {
- color: #6f34fe;
+  color: var(--hover-color);
 }
 .services-box a::after {
  content: '';
@@ -290,7 +313,7 @@ a:hover {
  bottom: -0.125rem; 
  width: 100%;
  height: 0.125rem; 
- background-color: #6f34fe;
+ background-color: var(--hover-color);
  transform: scaleX(0);
  transform-origin: left;
  transition: transform 0.3s ease;
@@ -334,7 +357,7 @@ a:hover {
 .project {
   position: relative;
   display: inline-block;
-  background: #500049;
+  background: var(--highlight-color);
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   border-radius: 28px;
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
@@ -357,12 +380,13 @@ a:hover {
   border-top-left-radius: 28px;
 }
 
+
 .project-title {
   font-family: "Poppins", sans-serif;
   font-size: 2rem;
   text-align: center;
   padding: 2rem 0.5rem;
-  color: #f9eae0;
+  color: var(--primary-color);
   text-transform: uppercase;
   position: relative;
   padding: 	0.325rem;
@@ -376,7 +400,7 @@ a:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  color: #f9eae0;
+  color: var(--primary-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -411,10 +435,45 @@ a:hover {
   animation: slideIn 1.0s ease forwards;
 }
 
+.project p {
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.project a {
+  text-decoration: none;
+  color: var(--primary-color);
+  position: relative;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.project a:hover {
+  color: var(--accent-color);
+}
+
+.project a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.5rem;
+  background-color: var(--accent-color);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.project a:hover::after {
+  transform: scaleX(1);
+}
+
 @keyframes pulse {
   0% {
     transform: scale(1);
-    box-shadow: 0 0 0 0 #ff9f5c;
+    box-shadow: 0 0 0 0 var(--accent-color);
   }
   70% {
     transform: scale(1.1);
@@ -424,6 +483,21 @@ a:hover {
     transform: scale(1);
     box-shadow: 0 0 0 0 rgba(137, 89, 129, 0);
   }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInUp 0.8s ease-out forwards;
 }
 
 .play-button {
@@ -704,6 +778,13 @@ a:hover {
   transform: translateY(100px);
 }
 
+input:focus, textarea:focus {
+  color: #500041;
+  border-color: #500041;
+  box-shadow: 0 0 5px rgba(80, 0, 65, 0.8);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
 /* ####################################################################### */
 /* ####################################################################### */
 /* Footer Section */
@@ -817,6 +898,9 @@ footer {
     justify-content: end;
     align-items: center;
     margin-top: -1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
 
   .nav-links {
@@ -834,6 +918,8 @@ footer {
   }
   .burger-menu {
     display: flex;
+    align-items: center;
+    align-self: center;
     flex-direction: column;
    margin-bottom:	0.625rem;
   }
@@ -843,7 +929,13 @@ footer {
   }
 
   .navbar-brand {
+    display: flex;
+    margin-top: 9px;
+    padding: 6px;
     order: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .burger-menu {
