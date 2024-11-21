@@ -908,7 +908,7 @@ footer {
     flex-direction: column;
     width: 100%;
     position: absolute;
-    top: 5rem;
+    top: 2.5rem;
     left: 0;
     background-color: var(--dark-background);
   }
@@ -961,11 +961,7 @@ footer {
     align-items: center;
     align-self: center;
     flex-direction: column;
-    margin-bottom:	0.625rem;
-    gap: 2px;
     z-index: 1001;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
   }
 
   .burger-menu .line {
@@ -974,18 +970,6 @@ footer {
     background-color: var(--primary-color);
   }
 
-  /* Burger menu animation when active
-.burger-menu.active .line:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-
-.burger-menu.active .line:nth-child(2) {
-  opacity: 0;
-}
-
-.burger-menu.active .line:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-} */
 
   .navbar {
     justify-content: space-between;
@@ -993,8 +977,7 @@ footer {
 
   .navbar-brand {
     display: flex;
-    margin-top: 9px;
-    padding: 6px;
+    margin-top: 7px;
     order: 1;
     flex-direction: column;
     justify-content: center;
