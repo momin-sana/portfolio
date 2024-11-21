@@ -274,6 +274,20 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
 
+            document.querySelectorAll('#nav-links a').forEach(item => {
+                item.addEventListener('click', () => {
+                    document.getElementById('nav-links').classList.remove('active');
+                });
+            });
+
+            // document.getElementById('burger-menu').addEventListener('click', function() {
+            //     const navLinks = document.getElementById('nav-links');
+            //     const burgerMenu = this;
+
+            //     navLinks.classList.toggle('active');
+            //     burgerMenu.classList.toggle('active'); // Add/remove the 'active' class for animation
+            // });
+
         // Get elements from the DOM
             var playButtons = document.querySelectorAll('.play-button');
             var modal = document.getElementById("videoModal");
